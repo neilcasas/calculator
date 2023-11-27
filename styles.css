@@ -43,9 +43,20 @@
 .calc-display{
     display:flex;
     flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
     border: 1px solid black;
     border-radius: 10px;
+    padding: 10px;
     height: 150px;
+}
+
+.calc-display .upper {
+    font-size: 24px;
+}
+
+.calc-display .lower {
+    font-size: 96px;
 }
 .calc-buttons {
     display: grid;
