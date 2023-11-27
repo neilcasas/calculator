@@ -73,16 +73,26 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: 100px;
     border: 1px solid black;
     border-radius: 10px;
-    font-size: 48px;
+    font-size: 36px;
     cursor: pointer;
 }
 .zero {
-    grid-column: span 2;
+    grid-column: span 3;
 }
+
+.clear {
+    background-color: lightcoral;
+}
+
+.backspace {
+    background-color: indianred;
+}
+
 .equals {
-    grid-row: span 4;
+    grid-row: span 2;
     background-color: dodgerblue;
 }
 
