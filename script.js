@@ -15,8 +15,28 @@ numberButtons.forEach(function(button) {
     button.addEventListener("click", function() {
         const buttonValue = button.textContent;
         mainDisplay.innerHTML = buttonValue;
+
+        // Change color on click
+        button.classList.add("clicked");
+        setTimeout(function(){
+            button.classList.remove("clicked");
+        }, 300);
     });
 });
+
+operatorButtons.forEach(function(button){
+
+    button.addEventListener("click", function(){
+
+        // Change color on click
+        button.classList.add("clicked");
+        setTimeout(function(){
+            button.classList.remove("clicked");
+        }, 300);
+    });
+
+});
+
 // Clear button;
 clearButton.addEventListener("click",function(){
     mainDisplay.innerHTML = 0;
