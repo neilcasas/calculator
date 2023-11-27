@@ -20,7 +20,7 @@ numberButtons.forEach(function(button) {
         button.classList.add("clicked");
         setTimeout(function(){
             button.classList.remove("clicked");
-        }, 300);
+        }, 200);
     });
 });
 
@@ -32,7 +32,7 @@ operatorButtons.forEach(function(button){
         button.classList.add("clicked");
         setTimeout(function(){
             button.classList.remove("clicked");
-        }, 300);
+        }, 200);
     });
 
 });
