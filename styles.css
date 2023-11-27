@@ -1,9 +1,8 @@
-*{
-    font-family: monospace;
+* {
+    font-family: sans-serif;
     margin: 0px;
     padding: 0px;
 }
-
 
 .main-container {
     display: flex;
@@ -14,13 +13,11 @@
     justify-content: space-between;
 }
 
-/* header */
 .header {
     padding: 10px;
     font-size: 32px;
 }
 
-/* body */
 .body {
     display: flex;
     flex-direction: column;
@@ -28,7 +25,6 @@
     justify-content: space-around;
 }
 
-/* calculator */
 .calculator {
     display: flex;
     flex-direction: column;
@@ -36,16 +32,17 @@
     border-radius: 10px;
     padding: 30px;
 }
-.calc-wrapper{
-    display:flex;
+
+.calc-wrapper {
+    display: flex;
     flex-direction: column;
 }
-.calc-display{
-    display:flex;
+
+.calc-display {
+    display: flex;
     flex-direction: column;
     justify-content: flex-end;
     align-items: flex-end;
-    border: 1px solid black;
     border-radius: 10px;
     padding: 10px;
     height: 150px;
@@ -58,14 +55,21 @@
 .calc-display .lower {
     font-size: 96px;
 }
+
 .calc-buttons {
     display: grid;
-    grid-template-columns: repeat(4, 150px);
-    grid-template-rows: repeat(4, 150px);
     padding: 10px;
     gap: 10px;
 }
-.calc-buttons div {
+
+.operators-grid,
+.numbers-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    gap: 10px;
+}
+
+.operators, .numbers {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,12 +78,14 @@
     font-size: 48px;
     cursor: pointer;
 }
-.equals{
+.zero {
     grid-column: span 2;
-    background-color:dodgerblue;
+}
+.equals {
+    grid-row: span 4;
+    background-color: dodgerblue;
 }
 
-/* footer */
 .footer {
     padding: 10px;
 }
