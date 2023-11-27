@@ -17,3 +17,7 @@ numberButtons.forEach(function(button) {
         mainDisplay.innerHTML = buttonValue;
     });
 });
+// Clear button;
+clearButton.addEventListener("click",function(){
+    mainDisplay.innerHTML = 0;
+})
