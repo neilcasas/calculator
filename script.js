@@ -1,5 +1,6 @@
 // Create a query selector for all buttons
 const numberButtons = document.querySelectorAll('.numbers');
+
 const operatorButtons = document.querySelectorAll('.operators');
 const equalsButton = document.querySelector('.equals');
 const clearButton = document.querySelector('.clear');
@@ -34,7 +35,7 @@ numberButtons.forEach(function(button) {
 operatorButtons.forEach(function(button){
     button.addEventListener("click", function(){
 
-        // Include operator character
+        // Update operator character and display
         operator = button.dataset.value;
         numberArray.push(operator);
         displayArray = numberArray.join('');
@@ -51,7 +52,7 @@ operatorButtons.forEach(function(button){
     });
 });
 
-// equals button
+// Invoke operate function on equals
 equalsButton.addEventListener("click", function(){
     clickAnimation(equalsButton);
     operate();
@@ -61,11 +62,7 @@ equalsButton.addEventListener("click", function(){
 clearButton.addEventListener("click",function(){
     mainDisplay.innerHTML = 0;
     upperDisplay.innerHTML = '';
-    displayArray = [];
-    numberArray = [];
-    num1 = 0;
-    num2 = 0;
-    result = 0;
+    resetValues();
     clickAnimation(clearButton);
 });
 
@@ -94,6 +91,8 @@ function clickAnimation (button){
 
 function operate(){
     switch (operator) {
+        
+        // Different cases depending on operators
         case '+':
             result = add(num2, num1);
             break;
@@ -110,14 +109,19 @@ function operate(){
             result = num1;
     }
 
+    // Display and reset upper display
     mainDisplay.innerHTML = result;
     upperDisplay.innerHTML = '';
 
-    // reset values
+    resetValues();
+}
+
+function resetValues (){
+    displayArray = [];
+    numberArray = [];
     num1 = 0;
     num2 = 0;
-    numberArray = [];
-    displayArray = [];
+    result = 0;
 }
 
 function add(num1, num2) {
