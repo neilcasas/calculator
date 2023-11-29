@@ -26,7 +26,7 @@ let operator = '';
 numberButtons.forEach(function(button) {
     button.addEventListener("click", function() {
         clickAnimation(button);
-        displayContent(button);
+        appendNumArray(button);
     });
 });
 
@@ -34,28 +34,20 @@ numberButtons.forEach(function(button) {
 // Operators
 operatorButtons.forEach(function(button){
     button.addEventListener("click", function(){
-
         // Do not display anything if there exists no num1;
         if(num1 === 0 && num2 === 0) {
             upperDisplay.innerHTML = '';
 
-        } else if (num1 === 0 && num2 !== 0){
-            // Replace operator with new operator clicked
-            operator = button.dataset.value;
-            upperDisplay.innerHTML = display;
-
         } else {
-            // Update operator character and display
-            operator = button.dataset.value;
-            numberArray.push(operator);
-            display = numberArray.join('');
-            upperDisplay.innerHTML = display;
-
             // on click of an operator, switch nums and get new num1
             num2 = num1;
-            num1 = 0;
             numberArray = [];
-            mainDisplay.innerHTML = num1;
+            mainDisplay.innerHTML = 0;
+
+           // Update operator character and display
+            operator = button.dataset.value;
+            display = `${num2} ${operator}`
+            upperDisplay.innerHTML = display;
         }      
         // Change color on click
         clickAnimation(button);
@@ -74,7 +66,7 @@ equalsButton.addEventListener("click", function(){
     resetValues();
 });
 
-// Clear button;
+// Clear button
 clearButton.addEventListener("click",function(){
     mainDisplay.innerHTML = 0;
     upperDisplay.innerHTML = '';
@@ -90,9 +82,8 @@ backspaceButton.addEventListener("click", function() {
     mainDisplay.innerHTML = num1;
 });
 
-function displayContent(button){
-
-    // On every click, push number array with number value of button, and display as number
+// On every click, push number array with number value of button, and display as number
+function appendNumArray(button){
     numberArray.push(button.dataset.value);
     num1 = Number(numberArray.join(''));
     mainDisplay.innerHTML = num1;
@@ -107,7 +98,6 @@ function clickAnimation (button){
 
 function operate(){
     switch (operator) {
-        
         // Different cases depending on operators
         case '+':
             result = add(num2, num1);
