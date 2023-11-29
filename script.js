@@ -106,10 +106,10 @@ function operate(){
             result = subtract(num2, num1);
             break;
         case 'x':
-            result = multiply(num2, num1);
+            result = Math.trunc(multiply(num2, num1));
             break;
         case '÷':
-            result = divide(num2, num1);
+            result = Math.trunc(divide(num2, num1));
             break;
         default:
             result = num1;
@@ -137,4 +137,5 @@ function multiply(num1, num2){
 
 function divide(num1, num2){
     return num1 / num2;
+
 }
