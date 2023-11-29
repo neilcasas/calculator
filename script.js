@@ -8,13 +8,20 @@ const backspaceButton = document.querySelector('.backspace');
 // Display
 const mainDisplay = document.querySelector('.lower');
 
+let displayArray = [];
+let number1 = 0;
+let number2 = 0;
+
 // Give event listener to all buttons
 numberButtons.forEach(function(button) {
 
-    // Display button content
+
     button.addEventListener("click", function() {
-        const buttonValue = button.textContent;
-        mainDisplay.innerHTML = buttonValue;
+        
+        // Display button content and assign to a number
+        displayArray.push(button.dataset.value);
+        number = Number(displayArray.join(''));
+        mainDisplay.innerHTML = number;
 
         // Change color on click
         button.classList.add("clicked");
@@ -25,9 +32,7 @@ numberButtons.forEach(function(button) {
 });
 
 operatorButtons.forEach(function(button){
-
     button.addEventListener("click", function(){
-
         // Change color on click
         button.classList.add("clicked");
         setTimeout(function(){
@@ -40,4 +45,11 @@ operatorButtons.forEach(function(button){
 // Clear button;
 clearButton.addEventListener("click",function(){
     mainDisplay.innerHTML = 0;
+    displayArray = [];
 })
+
+backspaceButton.addEventListener("click", function() {
+    mainDisplay.innerHTML -= buttonValue;
+})
+
+// Create function for operations
