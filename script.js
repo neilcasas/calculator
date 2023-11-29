@@ -15,11 +15,10 @@ const divideButton = document.querySelector('.divide');
 const mainDisplay = document.querySelector('.lower');
 const upperDisplay = document.querySelector('.upper');
 let numberArray = [];
-let display = "";
 let num1 = 0;
 let num2 = 0;
 let result = 0;
-let operator = '';
+let operator = null;
 
 
 // Give event listener to all buttons
@@ -30,28 +29,32 @@ numberButtons.forEach(function(button) {
     });
 });
 
-
 // Operators
 operatorButtons.forEach(function(button){
     button.addEventListener("click", function(){
         // Do not display anything if there exists no num1;
-        if(num1 === 0 && num2 === 0) {
+        if(num1 === 0 && num2 === 0) 
             upperDisplay.innerHTML = '';
 
-        } else {
-            // on click of an operator, switch nums and get new num1
+        // if num 2 is empty, switch values with num1
+        else if (num2 === 0) 
             num2 = num1;
-            numberArray = [];
-            mainDisplay.innerHTML = 0;
+        
+        // else if both numbers are present, operate and then display in upper 
+        else if (num1 !==0 && num2 !==0){
+            operate();
+            num2 = result;
+        }
+    
+        // Update operator character and display
+        operator = button.dataset.value;
+        upperDisplay.innerHTML = `${num2} ${operator}`;  
+        num1 = 0;
+        numberArray = [];
+        mainDisplay.innerHTML = 0;
 
-           // Update operator character and display
-            operator = button.dataset.value;
-            display = `${num2} ${operator}`
-            upperDisplay.innerHTML = display;
-        }      
         // Change color on click
         clickAnimation(button);
-
     });
 });
 
@@ -59,6 +62,7 @@ operatorButtons.forEach(function(button){
 equalsButton.addEventListener("click", function(){
     clickAnimation(equalsButton);
     operate();
+    
     // Display and reset upper display
     mainDisplay.innerHTML = result;
     upperDisplay.innerHTML = '';
