@@ -40,7 +40,7 @@ operatorButtons.forEach(function(button){
         else if (num1 !==0 && num2 !==0){
             operate();
             num2 = result;
-        }
+        } 
     
         // Update operator character and display
         operator = button.dataset.value;
@@ -117,11 +117,9 @@ function operate(){
 }
 
 function resetValues(){
-    display = '';
     numberArray = [];
     num1 = 0;
     num2 = 0;
-    result = 0;
 }
 
 // Functions for arithmetic operators
