@@ -32,12 +32,8 @@ numberButtons.forEach(function(button) {
 // Operators
 operatorButtons.forEach(function(button){
     button.addEventListener("click", function(){
-        // Do not display anything if there exists no num1;
-        if(num1 === 0 && num2 === 0) 
-            upperDisplay.innerHTML = '';
-
         // if num 2 is empty, switch values with num1
-        else if (num2 === 0) 
+        if (num2 === 0) 
             num2 = num1;
         
         // else if both numbers are present, operate and then display in upper 
