@@ -21,7 +21,6 @@ let result = 0;
 let temp = 0;
 let operator = null;
 
-
 // Give event listener to all buttons
 numberButtons.forEach(function(button) {
     button.addEventListener("click", function() {
@@ -29,7 +28,7 @@ numberButtons.forEach(function(button) {
         appendNumArray(button);
     });
 });
-
+ 
 // Operators
 operatorButtons.forEach(function(button){
     button.addEventListener("click", function(){
@@ -109,6 +108,8 @@ function operate(){
         case '-':
             result = subtract(num2, num1);
             break;
+
+        // Compute only int values
         case 'x':
             result = Math.trunc(multiply(num2, num1));
             break;
@@ -125,7 +126,7 @@ function resetValues(){
     num1 = 0;
     num2 = 0;
 
-    // continue computing by saving the previous result in temp, and resetting result
+    // Continue computing by saving the previous result in temp, and resetting result
     temp = result;
     result = 0;
 }
@@ -145,5 +146,4 @@ function multiply(num1, num2){
 
 function divide(num1, num2){
     return num1 / num2;
-
 }
