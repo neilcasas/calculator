@@ -15,7 +15,7 @@ const divideButton = document.querySelector('.divide');
 const mainDisplay = document.querySelector('.lower');
 const upperDisplay = document.querySelector('.upper');
 let numberArray = [];
-let displayArray = [];
+let display = "";
 let num1 = 0;
 let num2 = 0;
 let result = 0;
@@ -35,20 +35,31 @@ numberButtons.forEach(function(button) {
 operatorButtons.forEach(function(button){
     button.addEventListener("click", function(){
 
-        // Update operator character and display
-        operator = button.dataset.value;
-        numberArray.push(operator);
-        displayArray = numberArray.join('');
-        upperDisplay.innerHTML = displayArray;
+        // Do not display anything if there exists no num1;
+        if(num1 === 0 && num2 === 0) {
+            upperDisplay.innerHTML = '';
 
-        // on click of an operator, switch nums and get new num1
-        num2 = num1;
-        num1 = 0;
-        numberArray = [];
-        mainDisplay.innerHTML = num1;
+        } else if (num1 === 0 && num2 !== 0){
+            // Replace operator with new operator clicked
+            operator = button.dataset.value;
+            upperDisplay.innerHTML = display;
 
+        } else {
+            // Update operator character and display
+            operator = button.dataset.value;
+            numberArray.push(operator);
+            display = numberArray.join('');
+            upperDisplay.innerHTML = display;
+
+            // on click of an operator, switch nums and get new num1
+            num2 = num1;
+            num1 = 0;
+            numberArray = [];
+            mainDisplay.innerHTML = num1;
+        }      
         // Change color on click
         clickAnimation(button);
+
     });
 });
 
@@ -56,6 +67,11 @@ operatorButtons.forEach(function(button){
 equalsButton.addEventListener("click", function(){
     clickAnimation(equalsButton);
     operate();
+    // Display and reset upper display
+    mainDisplay.innerHTML = result;
+    upperDisplay.innerHTML = '';
+    
+    resetValues();
 });
 
 // Clear button;
@@ -108,22 +124,17 @@ function operate(){
         default:
             result = num1;
     }
-
-    // Display and reset upper display
-    mainDisplay.innerHTML = result;
-    upperDisplay.innerHTML = '';
-
-    resetValues();
 }
 
-function resetValues (){
-    displayArray = [];
+function resetValues(){
+    display = '';
     numberArray = [];
     num1 = 0;
     num2 = 0;
     result = 0;
 }
 
+// Functions for arithmetic operators
 function add(num1, num2) {
     return num1 + num2;
 }
