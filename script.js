@@ -27,7 +27,7 @@ numberButtons.forEach(function(button) {
 operatorButtons.forEach(function(button){
     button.addEventListener("click", function(){
         // once clicked, move it up with the sign
-
+        
         // Change color on click
         clickAnimation(button);
 
