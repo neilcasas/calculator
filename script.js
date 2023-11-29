@@ -7,10 +7,13 @@ const backspaceButton = document.querySelector('.backspace');
 
 // Display
 const mainDisplay = document.querySelector('.lower');
+const upperDisplay = document.querySelector('.upper');
+et numberArray = []
+l;
+let tempNum = 0;
+let num1 = 0;
+let num2 = 0;
 
-let displayArray = [];
-let number1 = 0;
-let number2 = 0;
 
 // Give event listener to all buttons
 numberButtons.forEach(function(button) {
@@ -19,9 +22,9 @@ numberButtons.forEach(function(button) {
     button.addEventListener("click", function() {
         
         // Display button content and assign to a number
-        displayArray.push(button.dataset.value);
-        number = Number(displayArray.join(''));
-        mainDisplay.innerHTML = number;
+        numberArray.push(button.dataset.value);
+        tempNum = Number(numberArray.join(''));
+        mainDisplay.innerHTML = tempNum;
 
         // Change color on click
         button.classList.add("clicked");
@@ -31,25 +34,51 @@ numberButtons.forEach(function(button) {
     });
 });
 
+// Operators
 operatorButtons.forEach(function(button){
     button.addEventListener("click", function(){
+        // once clicked, move it up with the sign
+        num2 = tempNum;
+        tempNum = 0;
+        upperDisplay.innerHTML = num2;
+        mainDisplay.innerHTML = tempNum;
+        numberArray = [];
+
+        
         // Change color on click
         button.classList.add("clicked");
         setTimeout(function(){
             button.classList.remove("clicked");
         }, 200);
+
     });
 
 });
+
+// equals button
+equalsButton.addEventListener("click", function(){
+    num1 += num2;
+    mainDisplay.innerHTML = num1;
+})
 
 // Clear button;
 clearButton.addEventListener("click",function(){
     mainDisplay.innerHTML = 0;
-    displayArray = [];
+    numberArray = [];
 })
 
+// Backspace button
 backspaceButton.addEventListener("click", function() {
-    mainDisplay.innerHTML -= buttonValue;
+    numberArray.splice(numberArray.length - 1, 1);
+    tempNum = Number(numberArray.join(''));
+    mainDisplay.innerHTML = tempNum;
 })
 
 // Create function for operations
+function add(x, y){
+    return x + y;
+}
+
+/*
+
+*/
