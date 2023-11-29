@@ -8,8 +8,7 @@ const backspaceButton = document.querySelector('.backspace');
 // Display
 const mainDisplay = document.querySelector('.lower');
 const upperDisplay = document.querySelector('.upper');
-et numberArray = []
-l;
+let numberArray = []
 let tempNum = 0;
 let num1 = 0;
 let num2 = 0;
@@ -18,19 +17,9 @@ let num2 = 0;
 // Give event listener to all buttons
 numberButtons.forEach(function(button) {
 
-
     button.addEventListener("click", function() {
-        
-        // Display button content and assign to a number
-        numberArray.push(button.dataset.value);
-        tempNum = Number(numberArray.join(''));
-        mainDisplay.innerHTML = tempNum;
-
-        // Change color on click
-        button.classList.add("clicked");
-        setTimeout(function(){
-            button.classList.remove("clicked");
-        }, 200);
+        displayContent(button);
+        clickAnimation(button);
     });
 });
 
@@ -38,18 +27,9 @@ numberButtons.forEach(function(button) {
 operatorButtons.forEach(function(button){
     button.addEventListener("click", function(){
         // once clicked, move it up with the sign
-        num2 = tempNum;
-        tempNum = 0;
-        upperDisplay.innerHTML = num2;
-        mainDisplay.innerHTML = tempNum;
-        numberArray = [];
 
-        
         // Change color on click
-        button.classList.add("clicked");
-        setTimeout(function(){
-            button.classList.remove("clicked");
-        }, 200);
+        clickAnimation(button);
 
     });
 
@@ -74,11 +54,18 @@ backspaceButton.addEventListener("click", function() {
     mainDisplay.innerHTML = tempNum;
 })
 
-// Create function for operations
-function add(x, y){
-    return x + y;
+function displayContent(button){
+    numberArray.push(button.dataset.value);
+    tempNum = Number(numberArray.join(''));
+    mainDisplay.innerHTML = tempNum;
 }
 
+function clickAnimation (button){
+    button.classList.add("clicked");
+    setTimeout(function(){
+        button.classList.remove("clicked");
+    }, 200);
+}
 /*
-
+bug where 
 */

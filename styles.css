@@ -71,7 +71,7 @@
 }
 
 
-.operators, .numbers {
+.operators, .numbers, .backspace, .equals, .clear {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -82,7 +82,8 @@
     cursor: pointer;
     transition: 0.3s ease;
 }
-.operators:hover, .numbers:hover {
+
+.operators:hover, .numbers:hover, .backspace:hover, .equals:hover, .clear:hover  {
     border: 1px solid rgb(144, 144, 144);
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
