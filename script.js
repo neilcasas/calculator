@@ -116,10 +116,10 @@ function operate(){
             break;
 
         // Compute only int values
-        case 'x':
+        case '*':
             result = multiply(num2, num1);
             break;
-        case '÷':
+        case '/':
             result = divide(num2, num1);
             break;
         default:
@@ -156,3 +156,55 @@ function divide(num1, num2){
     else
         return Math.trunc(num1 / num2);
 }
+
+// Adding keyboard input
+document.addEventListener("keydown", function(event) {
+    const key = event.key;
+
+    // Check if the key is a number or decimal point
+    if (!isNaN(key)) {
+        const keyButton = document.querySelector(`.numbers[data-value="${key}"]`);
+        if (keyButton) {
+            clickAnimation(keyButton);
+            appendNumArray(keyButton);
+        }
+    } else if (['+', '-', '*', '/'].includes(key)) {
+        const keyButton = document.querySelector(`.operators[data-value="${key}"]`);
+        if (keyButton) {
+            // allow continuous computing and reset temp
+            if (temp !=0) {
+                num2 = temp;
+                temp = 0;
+            }
+            // if num 2 is empty, switch values with num1
+            if (num2 === 0) 
+                num2 = num1;
+            
+            // else if both numbers are present, operate and then display in upper 
+            else if (num1 !==0 && num2 !==0){
+                operate();
+                num2 = result;
+            } 
+            // Update operator character and display
+            operator = keyButton.dataset.value;
+            upperDisplay.innerHTML = `${num2} ${operator}`;  
+            num1 = 0;
+            numberArray = [];
+            mainDisplay.innerHTML = 0;
+            clickAnimation(keyButton);
+        }
+    } else if (key === 'Enter') {
+        // Trigger equals button
+        clickAnimation(equalsButton);
+        operate();
+        mainDisplay.innerHTML = result;
+        upperDisplay.innerHTML = '';
+        resetValues();
+    } else if (key === 'Backspace') {
+        // Trigger backspace button
+        clickAnimation(backspaceButton);
+        numberArray.splice(numberArray.length - 1, 1);
+        num1 = Number(numberArray.join(''));
+        mainDisplay.innerHTML = num1;
+        }
+    });
