@@ -33,7 +33,7 @@ numberButtons.forEach(function(button) {
 operatorButtons.forEach(function(button){
     button.addEventListener("click", function(){
 
-        // allow continuous computing
+        // allow continuous computing and reset temp
         if (temp !=0) {
             num2 = temp;
             temp = 0;
@@ -83,6 +83,8 @@ clearButton.addEventListener("click",function(){
 // Backspace button
 backspaceButton.addEventListener("click", function() {
     clickAnimation(backspaceButton);
+    
+    // Remove one character from the last index and display
     numberArray.splice(numberArray.length - 1,1);
     num1 = Number(numberArray.join(''));
     mainDisplay.innerHTML = num1;
@@ -95,6 +97,7 @@ function appendNumArray(button){
     mainDisplay.innerHTML = num1;
 }
 
+// Add an animation on click
 function clickAnimation (button){
     button.classList.add("clicked");
     setTimeout(function(){
