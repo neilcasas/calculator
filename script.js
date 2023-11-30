@@ -133,8 +133,6 @@ function resetValues(){
     numberArray = [];
     num1 = 0;
     num2 = 0;
-
-    // Continue computing by saving the previous result in temp, and resetting result
     temp = result;
     result = 0;
 }
