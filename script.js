@@ -26,6 +26,8 @@ numberButtons.forEach(function(button) {
     button.addEventListener("click", function() {
         clickAnimation(button);
         appendNumArray(button);
+        // reset temp on key press 
+        temp = 0;
     });
 });
  
@@ -167,6 +169,7 @@ document.addEventListener("keydown", function(event) {
         if (keyButton) {
             clickAnimation(keyButton);
             appendNumArray(keyButton);
+            temp = 0;
         }
     } else if (['+', '-', '*', '/'].includes(key)) {
         const keyButton = document.querySelector(`.operators[data-value="${key}"]`);
@@ -191,8 +194,8 @@ document.addEventListener("keydown", function(event) {
             num1 = 0;
             numberArray = [];
             mainDisplay.innerHTML = 0;
-            clickAnimation(keyButton);
         }
+        clickAnimation(keyButton);
     } else if (key === 'Enter') {
         // Trigger equals button
         clickAnimation(equalsButton);
