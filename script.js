@@ -33,12 +33,9 @@ numberButtons.forEach(function(button) {
 operatorButtons.forEach(function(button){
     button.addEventListener("click", function(){
 
-        // after an equation which has a result, assign num2 to temp and reset both values
-        if (result !=0) {
-            num2 = temp;
-            temp = 0;
-            result = 0;
-        }
+        // allow continuous computing
+        if (temp !=0) num2 = temp;
+
         // if num 2 is empty, switch values with num1
         if (num2 === 0) 
             num2 = num1;
@@ -128,6 +125,8 @@ function resetValues(){
     numberArray = [];
     num1 = 0;
     num2 = 0;
+
+    // Continue computing by saving the previous result in temp, and resetting result
     temp = result;
     result = 0;
 }
