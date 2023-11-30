@@ -34,7 +34,10 @@ operatorButtons.forEach(function(button){
     button.addEventListener("click", function(){
 
         // allow continuous computing
-        if (temp !=0) num2 = temp;
+        if (temp !=0) {
+            num2 = temp;
+            temp = 0;
+        }
 
         // if num 2 is empty, switch values with num1
         if (num2 === 0) 
