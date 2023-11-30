@@ -62,7 +62,7 @@ operatorButtons.forEach(function(button){
     });
 });
 
-// Invoke operate function on equals
+// Invoke operate function on equals9/
 equalsButton.addEventListener("click", function(){
     clickAnimation(equalsButton);
     operate();
